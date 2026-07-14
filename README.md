@@ -4,6 +4,17 @@ Projetos e exercícios de backend acumulados nos meus estudos, organizados por l
 
 ## Estrutura
 
+Os projetos são organizados pelo padrão `linguagem/empresa-nome-do-curso/modulo-ou-projeto`, como em:
+
+```
+frontend-learning/
+└── html-css/
+    └── sctec-introducao-a-frontend/
+        └── desafio-01/
+```
+
+Pastas mais antigas ainda não seguem o padrão à risca, mas mantêm a mesma ideia:
+
 ```
 backend-learning/
 ├── php/                 PHP (Alura) — do básico ao MVC, testes e web scraping
