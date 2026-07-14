@@ -1,0 +1,26 @@
+# Dependencias / builds (gerados, nunca versionar)
+
+# PHP / Composer
+**/vendor/
+!**/static/**/vendor/
+
+# Node
+**/node_modules/
+
+# Python
+**/venv/
+**/.venv/
+**/__pycache__/
+*.py[cod]
+*.sqlite3
+
+# Java / .NET (builds e IDE)
+**/target/
+**/bin/
+**/obj/
+**/.idea/
+*.iml
+
+# Sistema
+.DS_Store
+Thumbs.db
