@@ -5,6 +5,9 @@ class Produto {
     }
 
     mostrarDetalhes() {
-        console.log(`${this.nome} | R$ ${this.preco}`)
+        console.log(`${this.nome} | R$ ${this.preco}`);
     }
 }
+
+const produto = new Produto("Celular", 2000);
+produto.mostrarDetalhes();
