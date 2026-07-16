@@ -21,6 +21,21 @@ function carregarProduto(id) {
     });
 }
 
+async function pesquisarProduto(id) {
+    const product = await carregarProduto(id);
+
+    try {
+        if (!product) {
+            throw new Error("Produto não encontrado");
+        }
+
+        const jsonProduct = JSON.stringify(product);
+        console.log(jsonProduct);
+    } catch (error) {
+        console.error(error);
+    }
+}
+
 carregarProduto(2).then(product => {
     try {
         if (!product) {
@@ -33,3 +48,5 @@ carregarProduto(2).then(product => {
         console.error(error);
     }
 });
+
+pesquisarProduto(1);
