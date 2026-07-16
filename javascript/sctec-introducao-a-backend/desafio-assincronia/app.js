@@ -20,3 +20,16 @@ function carregarProduto(id) {
         }, 2000);
     });
 }
+
+carregarProduto(2).then(product => {
+    try {
+        if (!product) {
+            throw new Error("Produto não encontrado");
+        }
+
+        const jsonProduct = JSON.stringify(product);
+        console.log(jsonProduct);
+    } catch (error) {
+        console.error(error);
+    }
+});
