@@ -1,0 +1,17 @@
+head
+  meta(charset='utf-8')
+  title Criar cliente
+  link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css')
+
+  body
+    .modal-dialog
+        .modal-content
+          .modal-body
+            form(role='form' method='' action='')
+              div.form-group
+                label(for='name') Nome:
+                input#name.form-control(type='text', placeholder='nome' name='name')
+              div.form-group
+                label(for='email') Email:
+                input#email.form-control(type='email', placeholder='name@email.com' name='email')
+              button.btn.btn-primary(type="submit", name="asdf") Criar

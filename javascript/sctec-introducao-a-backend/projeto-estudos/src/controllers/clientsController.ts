@@ -1,9 +1,17 @@
 import type { Request, Response } from "express";
+import clientsModel from "../models/clientsModel.js";
 
-function index(req: Request, res: Response) {
-  res.render("index");
+async function index(req: Request, res: Response) {
+  const clients = await clientsModel.findAll();
+
+  res.json(clients);
+}
+
+async function create(req: Request, res: Response) {
+  res.render("create");
 }
 
 export default {
-    index
+    index,
+    create
 };

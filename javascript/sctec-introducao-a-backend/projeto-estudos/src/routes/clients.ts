@@ -4,5 +4,6 @@ import clientsController from "../controllers/clientsController.js";
 const router = Router();
 
 router.get("/", clientsController.index);
+router.get("/create", clientsController.create);
 
 export default router;
