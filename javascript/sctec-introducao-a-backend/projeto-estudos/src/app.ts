@@ -1,15 +1,20 @@
 import express from "express";
 import clientsRouter from "./routes/clients.js"; 
-const app = express();
 import { config } from "dotenv-safe";
+import db from "./db.js";
+
+const app = express();
 
 config();
 
+app.use(clientsRouter);
 app.set("view engine", "pug");
 app.set("views", "./src/views");
 
-app.use(clientsRouter);
-
-app.listen(process.env.PORT, () => {
-    console.log(`Ouvindo em http://localhost:${process.env.PORT}`);
+db.sync().then(() => {
+    console.log(`Conectado com o banco: ${process.env.DB_NAME}`);
+}).then(() => {
+    app.listen(process.env.PORT, () => {
+        console.log(`Ouvindo em http://localhost:${process.env.PORT}`);
+    });
 });
