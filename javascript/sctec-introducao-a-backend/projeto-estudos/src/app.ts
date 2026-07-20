@@ -7,6 +7,9 @@ const app = express();
 
 config();
 
+app.use(express.urlencoded({
+    extended: true
+}));
 app.use(clientsRouter);
 app.set("view engine", "pug");
 app.set("views", "./src/views");
