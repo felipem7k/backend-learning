@@ -1,0 +1,17 @@
+head
+  meta(charset='utf-8')
+  title Login
+  link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css')
+
+  body
+    .modal-dialog
+        .modal-content
+          .modal-body
+            form(role='form' method='POST' action='/')
+              div.form-group
+                label(for='user') Usuário:
+                input#name.form-control(type='text', placeholder='username' name='user')
+              div.form-group
+                label(for='password') Senha:
+                input#email.form-control(type='password', placeholder='******' name='password')
+              button.btn.btn-primary(type="submit", name="asdf") Login

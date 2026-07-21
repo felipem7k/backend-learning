@@ -1,5 +1,6 @@
 import express from "express";
 import clientsRouter from "./routes/clients.js"; 
+import usersRouter from "./routes/users.js";
 import { config } from "dotenv-safe";
 import db from "./db.js";
 
@@ -11,6 +12,7 @@ app.use(express.urlencoded({
     extended: true
 }));
 app.use(clientsRouter);
+app.use(usersRouter);
 app.set("view engine", "pug");
 app.set("views", "./src/views");
 
