@@ -17,9 +17,14 @@ async function show(req: Request, res: Response) {
     return;
   }
 
-  const client = await clientsModel.findByPk(id);
-
-  res.json(client);
+  try {
+    const client = await clientsModel.findByPk(id);
+  
+    res.json(client);
+  } catch (error) {
+    console.error(error);
+    res.status(500).end();
+  }
 }
 
 async function create(req: Request, res: Response) {
@@ -29,11 +34,16 @@ async function create(req: Request, res: Response) {
 async function store(req: Request, res: Response) {
   const client = req.body as IClients;
   
-  await clientsModel.create({
-    ...client
-  });
-
-  res.redirect("/");
+  try {
+    await clientsModel.create({
+      ...client
+    });
+  
+    res.redirect("/clients");
+  } catch (error) {
+    console.error(error);
+    res.status(500).end();
+  }
 }
 
 async function edit(req: Request, res: Response) {
@@ -44,31 +54,46 @@ async function edit(req: Request, res: Response) {
     return;
   }
 
-  const client = await clientsModel.findByPk(id);
+  try {
+    const client = await clientsModel.findByPk(id);
 
-  res.render("edit", {
-    client
-  });
+    res.render("edit", {
+      client
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).end();
+  }
 }
 
 async function update(req: Request, res: Response) {
-  await clientsModel.update(req.body as IClients, {
-    where: {
-      id: req.params.id
-    }
-  });
+  try {
+    await clientsModel.update(req.body as IClients, {
+      where: {
+        id: req.params.id
+      }
+    });
 
-  res.redirect("/");
+    res.redirect("/clients");
+  } catch (error) {
+    console.error(error);
+    res.status(500).end();
+  }
 }
 
 async function del(req: Request, res: Response) {
-  await clientsModel.destroy({
-    where: {
-      id: req.params.id
-    }
-  });
+  try {
+    await clientsModel.destroy({
+      where: {
+        id: req.params.id
+      }
+    });
 
-  res.redirect("/");
+    res.redirect("/clients");
+  } catch (error) {
+    console.error(error);
+    res.status(500).end();
+  }
 }
 
 export default {

@@ -8,21 +8,25 @@ function login(req: Request, res: Response) {
 
 async function checkLogin(req: Request, res: Response) {
   const body = req.body as IUsers;
+  try {
+    const user = await usersModel.findOne({
+      where: {
+        user: body.user,
+        password: body.password
+      }
+    });
 
-  const user = await usersModel.findOne({
-    where: {
-      user: body.user,
-      password: body.password
+    if (!user) {
+      res.redirect("/");
+      console.log("Usuário não encontrado");
+      return;
     }
-  });
 
-  if (!user) {
-    res.redirect("/");
-    console.log("Usuário não encontrado");
-    return;
+    res.redirect("/clients");
+  } catch (error) {
+    console.error(error);
+    res.status(500).end();
   }
-
-  res.redirect("/clients");
 }
 
 export default {
