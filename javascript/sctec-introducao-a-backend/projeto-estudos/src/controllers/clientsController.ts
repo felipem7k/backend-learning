@@ -11,6 +11,12 @@ async function index(req: Request, res: Response) {
 
 async function show(req: Request, res: Response) {
   const id = Number(req.params.id);
+
+  if (!Number.isInteger(id) || id <= 0) {
+    res.sendStatus(404);
+    return;
+  }
+
   const client = await clientsModel.findByPk(id);
 
   res.json(client);
@@ -30,9 +36,36 @@ async function store(req: Request, res: Response) {
   res.redirect("/");
 }
 
+async function edit(req: Request, res: Response) {
+   const id = Number(req.params.id);
+
+  if (!Number.isInteger(id) || id <= 0) {
+    res.sendStatus(404);
+    return;
+  }
+
+  const client = await clientsModel.findByPk(id);
+
+  res.render("edit", {
+    client
+  });
+}
+
+async function update(req: Request, res: Response) {
+  await clientsModel.update(req.body as IClients, {
+    where: {
+      id: req.params.id
+    }
+  });
+
+  res.redirect("/");
+}
+
 export default {
     index,
     show,
     create,
-    store
+    store,
+    edit,
+    update
 };
