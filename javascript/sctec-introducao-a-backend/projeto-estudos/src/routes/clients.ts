@@ -11,6 +11,8 @@ router.post("/create", clientsController.store);
 router.get("/edit/:id", clientsController.edit);
 router.post("/edit/:id", clientsController.update);
 
+router.get("/del/:id", clientsController.del);
+
 router.get("/:id", clientsController.show);
 
 export default router;

@@ -61,11 +61,22 @@ async function update(req: Request, res: Response) {
   res.redirect("/");
 }
 
+async function del(req: Request, res: Response) {
+  await clientsModel.destroy({
+    where: {
+      id: req.params.id
+    }
+  });
+
+  res.redirect("/");
+}
+
 export default {
     index,
     show,
     create,
     store,
     edit,
-    update
+    update,
+    del
 };
