@@ -10,5 +10,7 @@ Route::get('/chirps/{chirp}/edit', [ChirpController::class, 'edit']);
 Route::put('/chirps/{chirp}', [ChirpController::class, 'update']);
 Route::delete('/chirps/{chirp}', [ChirpController::class, 'destroy']);
 
-Route::view('/register', 'auth.register');
-Route::post('/register', Register::class);
+Route::view('/register', 'auth.register')
+    ->middleware('guest');
+Route::post('/register', Register::class)
+    ->middleware('guest');
