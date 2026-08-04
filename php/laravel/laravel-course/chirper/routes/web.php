@@ -28,4 +28,5 @@ Route::post('/login', Login::class)
     ->middleware('guest');
 
 Route::post('/logout', Logout::class)
-    ->middleware('auth');
+    ->middleware('auth')
+    ->name('logout');
